@@ -29,7 +29,13 @@ function App() {
         </Grid>
 
         <Grid item>
-          <SpendingForm/>
+          <SpendingForm
+            incomeDefault={0}
+            savingsDefault={10}
+            investmentDefault={10}
+            billsDefault={60}
+            splurgeDefault={20}
+          />
         </Grid>
       </Grid>
     </Container>
