@@ -9,8 +9,10 @@ export default function PercentageInput({id, label, minimumValue, maximumValue, 
     setValue(newValue);
   };
   const handleInputChange = (event) => {
-    setValue(event.target.value === '' ? '' : Number(event.target.value));
+    setValue(event.target.value === '' ? '' : Number(removePercentageSign(event.target.value)));
   };
+  const removePercentageSign = (input) => input.replace('%', '');
+  
   const handleOnBlur = () => {
     if (value < 0) {
       setValue(0);
@@ -48,13 +50,10 @@ export default function PercentageInput({id, label, minimumValue, maximumValue, 
             </Grid>
             <Grid item xs={2}>
               <Input
-                value={value}
+                value={`${value}%`}
                 onChange={handleInputChange}
                 onBlur={handleOnBlur}
               />
-            </Grid>
-            <Grid item xs={1}>
-              <Typography>%</Typography>
             </Grid>
           </Grid>
     )
