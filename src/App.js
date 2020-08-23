@@ -28,6 +28,15 @@ function App() {
           <PercentageInput id='savings-slider' label='I want to save' 
             minimumValue={0} maximumValue={50} defaultValue={10} 
           />
+          <PercentageInput id='investment-slider' label='I want to invest' 
+            minimumValue={0} maximumValue={50} defaultValue={10} 
+          />
+          <PercentageInput id='bills-slider' label='I need to pay bills' 
+            minimumValue={30} maximumValue={80} defaultValue={60} 
+          />
+          <PercentageInput id='splurge-slider' label='Leftover for splurging' 
+            minimumValue={0} maximumValue={30} defaultValue={20} 
+          />
         </form>
       </Box>
     </Container>
