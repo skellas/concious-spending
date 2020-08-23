@@ -3,7 +3,7 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar'
 import Box from '@material-ui/core/Box'
-import { TextField } from '@material-ui/core';
+import { TextField, Grid } from '@material-ui/core';
 import PercentageInput from './components/PercentageInput';
 
 function App() {
@@ -17,14 +17,22 @@ function App() {
   `;
   return (
     <Container maxWidth='sm'>
-      <AppBar position='static'>
-        <Typography variant='h4' style={{ marginLeft: '2%' }}>Concious Spending App</Typography>
-      </AppBar>
-      <Box>
-        <Typography>{headerCopy}</Typography>
+      <Grid container direction='column' spacing={4} >
+        <Grid item>
+          <AppBar position='static'>
+            <Typography variant='h4' style={{ marginLeft: '2%' }}>Concious Spending App</Typography>
+          </AppBar>
+        </Grid>
+        <Grid item>
+          <Typography>{headerCopy}</Typography>
+        </Grid>
 
-        <form>
-          <TextField id='income' label='My take home income is' />
+        <Grid item>
+          <Grid container direction='row' spacing={4}>
+            <Grid item xs={9}>
+              <TextField fullWidth id='income' label='My take home income is' />
+            </Grid>
+          </Grid>
           <PercentageInput id='savings-slider' label='I want to save' 
             minimumValue={0} maximumValue={50} defaultValue={10} 
           />
@@ -37,8 +45,8 @@ function App() {
           <PercentageInput id='splurge-slider' label='Leftover for splurging' 
             minimumValue={0} maximumValue={30} defaultValue={20} 
           />
-        </form>
-      </Box>
+        </Grid>
+      </Grid>
     </Container>
   );
 }
