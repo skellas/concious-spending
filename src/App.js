@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar'
-import { TextField, Grid } from '@material-ui/core';
-import PercentageInput from './components/PercentageInput';
+import {  Grid } from '@material-ui/core';
 import SpendingForm from './container/SpendingForm';
 
 function App() {
