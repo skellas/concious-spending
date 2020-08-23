@@ -28,7 +28,7 @@ export default function SpendingForm({incomeDefault, savingsDefault, investmentD
                 minimumValue={30} maximumValue={80} defaultValue={billsDefault}
                 percentageOf={income}
             />
-            <PercentageInput id='splurge-slider' label='Leftover for splurging'
+            <PercentageInput id='splurge-slider' label='Guilt free spending money'
                 minimumValue={0} maximumValue={30} defaultValue={splurgeDefault}
                 percentageOf={income}
             />
