@@ -1,8 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { Slider, Grid, Input, TextField } from '@material-ui/core';
 
-export default function PercentageInput({ id, label, minimumValue, maximumValue, defaultValue, percentageOf, value, changeHandler }) {
+export default function PercentageInput(
+  { 
+    id, 
+    label, 
+    minimumValue, 
+    maximumValue, 
+    defaultValue, 
+    percentageOf, 
+    value, 
+    changeHandler,
+    error
+  }
+  ) {
 
   const handleSliderChange = (event, newValue) => {
     changeHandler(newValue);
@@ -52,6 +64,7 @@ export default function PercentageInput({ id, label, minimumValue, maximumValue,
           value={`${value}%`}
           onChange={handleInputChange}
           onBlur={handleOnBlur}
+          error={error}
         />
       </Grid>
       <Grid item xs={4}>
