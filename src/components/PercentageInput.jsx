@@ -2,22 +2,21 @@ import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { Slider, Grid, Input, TextField } from '@material-ui/core';
 
-export default function PercentageInput({id, label, minimumValue, maximumValue, defaultValue, percentageOf}) {
+export default function PercentageInput({id, label, minimumValue, maximumValue, defaultValue, percentageOf, value, changeHandler}) {
     
-  const [value, setValue] = useState(defaultValue);
   const handleSliderChange = (event, newValue) => {
-    setValue(newValue);
+    changeHandler(newValue);
   };
   const handleInputChange = (event) => {
-    setValue(event.target.value === '' ? '' : Number(removePercentageSign(event.target.value)));
+    changeHandler(event.target.value === '' ? '' : Number(removePercentageSign(event.target.value)));
   };
   const removePercentageSign = (input) => input.replace('%', '');
   
   const handleOnBlur = () => {
-    if (value < 0) {
-      setValue(0);
-    } else if (value > 50) {
-      setValue(50);
+    if (value < minimumValue) {
+      changeHandler(minimumValue);
+    } else if (value > maximumValue) {
+      changeHandler(maximumValue);
     }
   };
   const inputMarks = [
