@@ -2,6 +2,7 @@
   "name": "concious-spending",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://notjustseth.com/projects/conscious-spending",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@testing-library/jest-dom": "^4.2.4",
