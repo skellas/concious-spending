@@ -11,12 +11,12 @@ function App() {
       <Grid container direction='column' spacing={1} >
         <Grid item>
           <AppBar position='static'>
-            <Typography variant='h4' style={{ marginLeft: '2%' }}>Concious Spending App</Typography>
+            <Typography variant='h4' style={{ marginLeft: '2%' }}>Conscious Spending App</Typography>
           </AppBar>
         </Grid>
         <Grid item>
           <Typography id='pp1' variant='body1'>
-            For those of us who don't want to bother with a budget, there's the idea of a "concious spending plan".
+            For those of us who don't want to bother with a budget, there's the idea of a "conscious spending plan".
             It's a simple concept, you start with your income and then break it down into three groups.
           </Typography>
           <List>
