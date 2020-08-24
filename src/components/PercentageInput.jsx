@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { Slider, Grid, Input, TextField } from '@material-ui/core';
 
-export default function PercentageInput({id, label, minimumValue, maximumValue, defaultValue, percentageOf, value, changeHandler}) {
-    
+export default function PercentageInput({ id, label, minimumValue, maximumValue, defaultValue, percentageOf, value, changeHandler }) {
+
   const handleSliderChange = (event, newValue) => {
     changeHandler(newValue);
   };
@@ -11,7 +11,7 @@ export default function PercentageInput({id, label, minimumValue, maximumValue, 
     changeHandler(event.target.value === '' ? '' : Number(removePercentageSign(event.target.value)));
   };
   const removePercentageSign = (input) => input.replace('%', '');
-  
+
   const handleOnBlur = () => {
     if (value < minimumValue) {
       changeHandler(minimumValue);
@@ -33,36 +33,36 @@ export default function PercentageInput({id, label, minimumValue, maximumValue, 
       label: maximumValue?.toString(),
     },
   ];
-    return (
-        <Grid container spacing={4} >
-            <Grid item xs={6}>
-              <Typography id={`${id}-label`}>{label}</Typography>
-              <Slider
-                aria-labelledby={`${id}-label`}
-                step={1}
-                min={minimumValue}
-                max={maximumValue}
-                marks={inputMarks}
-                value={value}
-                onChange={handleSliderChange}
-              />
-            </Grid>
-            <Grid item xs={2}>
-              <Input
-                value={`${value}%`}
-                onChange={handleInputChange}
-                onBlur={handleOnBlur}
-              />
-            </Grid>
-            <Grid item xs={4}>
-              <TextField
-                id={`${id}-calculated`}
-                value={Number(percentageOf * (value / 100)).toFixed(2) }
-                variant='outlined'
-                label={`You'll need`}
-                aria-readonly={true}
-              />
-            </Grid>
-          </Grid>
-    )
+  return (
+    <Grid container spacing={4} >
+      <Grid item xs={6}>
+        <Typography id={`${id}-label`}>{label}</Typography>
+        <Slider
+          aria-labelledby={`${id}-label`}
+          step={1}
+          min={minimumValue}
+          max={maximumValue}
+          marks={inputMarks}
+          value={value}
+          onChange={handleSliderChange}
+        />
+      </Grid>
+      <Grid item xs={2}>
+        <Input
+          value={`${value}%`}
+          onChange={handleInputChange}
+          onBlur={handleOnBlur}
+        />
+      </Grid>
+      <Grid item xs={4}>
+        <TextField
+          id={`${id}-calculated`}
+          value={Number(percentageOf * (value / 100)).toFixed(2)}
+          variant='outlined'
+          label={`You'll need`}
+          aria-readonly={true}
+        />
+      </Grid>
+    </Grid>
+  )
 }

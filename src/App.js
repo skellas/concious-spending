@@ -2,7 +2,7 @@ import React from 'react';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar'
-import {  Grid, List, ListItemText } from '@material-ui/core';
+import { Grid, List, ListItemText } from '@material-ui/core';
 import SpendingForm from './container/SpendingForm';
 
 function App() {
@@ -20,12 +20,12 @@ function App() {
             It's a simple concept, you start with your income and then break it down into three groups.
           </Typography>
           <List>
-            <ListItemText primary=' - How much do I need to spend on housing, insurance, food, and other necessities?'/>
-            <ListItemText primary=' - How much do I want to save for emergencies or other short term goals?'/>
-            <ListItemText primary=' - How much do I want to invest for long term goals and/or retirement?'/>
+            <ListItemText primary=' - How much do I need to spend on housing, insurance, food, and other necessities?' />
+            <ListItemText primary=' - How much do I want to save for emergencies or other short term goals?' />
+            <ListItemText primary=' - How much do I want to invest for long term goals and/or retirement?' />
           </List>
           <Typography id='pp2' variant='body1'>
-            Once you've answered these questions, you're left with the amount of money you can spend on whatever you want. 
+            Once you've answered these questions, you're left with the amount of money you can spend on whatever you want.
             Anything. Who cares what you spend it on. You've already knocked out all of your necessities, your savings,
             and your investments.
           </Typography>

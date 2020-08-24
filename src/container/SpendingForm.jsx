@@ -1,29 +1,29 @@
 import React, { useState } from 'react';
 import { TextField, Grid } from '@material-ui/core';
 import PercentageInput from '../components/PercentageInput';
-export default function SpendingForm({incomeDefault, savingsDefault, investmentDefault, billsDefault, splurgeDefault}) {
-    
-  const [income, setIncome] = useState(incomeDefault);
-  const handleIncomeChange = (event) => {
-    setIncome(event.target.value === '' ? '' : Number(event.target.value));
-  };
-  
-  const [savings, setSavings] = useState(savingsDefault);
-  const handleSavingsChange = (value) => {
-    setSavings(value);
-  };
-  const [investments, setInvestments] = useState(investmentDefault);
-  const handleInvestmentsChange = (value) => {
-    setInvestments(value);
-  };
-  const [bills, setBills] = useState(billsDefault);
-  const handleBillsChange = (value) => {
-    setBills(value);
-  };
-  const [splurge, setSplurge] = useState(splurgeDefault);
-  const handleSplurgeChange = (value) => {
-    setSplurge(value);
-  };
+export default function SpendingForm({ incomeDefault, savingsDefault, investmentDefault, billsDefault, splurgeDefault }) {
+
+    const [income, setIncome] = useState(incomeDefault);
+    const handleIncomeChange = (event) => {
+        setIncome(event.target.value === '' ? '' : Number(event.target.value));
+    };
+
+    const [savings, setSavings] = useState(savingsDefault);
+    const handleSavingsChange = (value) => {
+        setSavings(value);
+    };
+    const [investments, setInvestments] = useState(investmentDefault);
+    const handleInvestmentsChange = (value) => {
+        setInvestments(value);
+    };
+    const [bills, setBills] = useState(billsDefault);
+    const handleBillsChange = (value) => {
+        setBills(value);
+    };
+    const [splurge, setSplurge] = useState(splurgeDefault);
+    const handleSplurgeChange = (value) => {
+        setSplurge(value);
+    };
     return (
         <React.Fragment>
             <Grid container direction='row' spacing={4}>
