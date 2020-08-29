@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar'
-import { Grid, ButtonGroup, Button, Card, CardContent } from '@material-ui/core';
+import { Grid, ButtonGroup, Button, Paper, Card, CardContent } from '@material-ui/core';
 import SpendingForm from './container/SpendingForm';
 import StepsMenu from './components/StepsMenu';
 import OverviewForm from './container/OverviewForm';
@@ -56,11 +56,9 @@ function App() {
           <StepsMenu steps={steps} activeStep={currentStep} />
         </Grid>
         <Grid item>
-          <Card>
-            <CardContent>
+          <Paper elevation={1}>
               {renderCurrentStep()}
-              </CardContent>
-          </Card>
+          </Paper>
         </Grid>
         <Grid item>
           <Card>
