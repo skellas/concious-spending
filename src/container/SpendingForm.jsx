@@ -5,7 +5,7 @@ export default function SpendingForm({ incomeDefault, savingsDefault, investment
 
     const [income, setIncome] = useState(incomeDefault);
     const handleIncomeChange = (event) => {
-        setIncome(event.target.value === '' ? '' : Number(event.target.value));
+        setIncome(event.target.value === '' ? 0 : Number(event.target.value.replace('$','')));
     };
 
     const [savings, setSavings] = useState(savingsDefault);
@@ -32,9 +32,9 @@ export default function SpendingForm({ incomeDefault, savingsDefault, investment
     return (
         <React.Fragment>
             <Grid container direction='row' spacing={4}>
-                <Grid item xs={12}>
+                <Grid item xs={8}>
                     <TextField fullWidth id='income' label='My take home income is'
-                        value={income} onChange={handleIncomeChange}
+                        value={`$${income}`} onChange={handleIncomeChange}
                     />
                 </Grid>
             </Grid>
