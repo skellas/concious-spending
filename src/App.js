@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar'
-import { Grid } from '@material-ui/core';
+import { Grid, ButtonGroup, Button } from '@material-ui/core';
 import SpendingForm from './container/SpendingForm';
 import StepsMenu from './components/StepsMenu';
 import OverviewForm from './container/OverviewForm';
@@ -16,12 +16,12 @@ function App() {
     { 'id': 'investments', 'label': 'Investments' },
     { 'id': 'summary', 'label': 'Report' },
   ];
-  const [currentStep, setCurrentStep] = useState(0);
-  const [income, setIncome] = useState(0);
-  const [savingsPercent, setSavingsPercent] = useState(10);
-  const [investmentsPercent, setInvestmentsPercent] = useState(10);
-  const [needsPercent, setNeedsPercent] = useState(60);
-  const [wantsPercent, setWantsPercent] = useState(20);
+  let [currentStep, setCurrentStep] = useState(0);
+  let [income, setIncome] = useState(0);
+  let [savingsPercent, setSavingsPercent] = useState(10);
+  let [investmentsPercent, setInvestmentsPercent] = useState(10);
+  let [needsPercent, setNeedsPercent] = useState(60);
+  let [wantsPercent, setWantsPercent] = useState(20);
 
   const renderCurrentStep = () => {
     switch (currentStep) {
@@ -41,6 +41,9 @@ function App() {
 
     }
   }
+  const handleNextClick = () => setCurrentStep(currentStep+1);
+  const handleBackClick = () => setCurrentStep(currentStep-1);
+
   return (
     <Container maxWidth='sm'>
       <Grid container direction='column' spacing={1} >
@@ -50,12 +53,26 @@ function App() {
           </AppBar>
         </Grid>
         <Grid item>
-          <StepsMenu steps={steps} activeStep={currentStep.id} />
+          <StepsMenu steps={steps} activeStep={currentStep} />
         </Grid>
         <Grid item>
           {renderCurrentStep()}
         </Grid>
         <Grid item>
+          <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
+            <ButtonGroup color='primary'>
+              <Button 
+                disabled={currentStep === 0}
+                onClick={handleBackClick}>
+                Back
+              </Button>
+              <Button 
+                disabled={currentStep === steps.length}
+                onClick={handleNextClick}>
+                Next
+              </Button>
+            </ButtonGroup>
+          </div>
         </Grid>
       </Grid>
     </Container>
