@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar'
-import { Grid, ButtonGroup, Button } from '@material-ui/core';
+import { Grid, ButtonGroup, Button, Card, CardContent } from '@material-ui/core';
 import SpendingForm from './container/SpendingForm';
 import StepsMenu from './components/StepsMenu';
 import OverviewForm from './container/OverviewForm';
@@ -56,23 +56,29 @@ function App() {
           <StepsMenu steps={steps} activeStep={currentStep} />
         </Grid>
         <Grid item>
-          {renderCurrentStep()}
+          <Card>
+            <CardContent>
+              {renderCurrentStep()}
+              </CardContent>
+          </Card>
         </Grid>
         <Grid item>
-          <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
-            <ButtonGroup color='primary'>
-              <Button 
-                disabled={currentStep === 0}
-                onClick={handleBackClick}>
-                Back
-              </Button>
-              <Button 
-                disabled={currentStep === steps.length}
-                onClick={handleNextClick}>
-                Next
-              </Button>
-            </ButtonGroup>
-          </div>
+          <Card>
+            <CardContent style={{ alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
+              <ButtonGroup color='primary'>
+                <Button 
+                  disabled={currentStep === 0}
+                  onClick={handleBackClick}>
+                  Back
+                </Button>
+                <Button 
+                  disabled={currentStep === steps.length}
+                  onClick={handleNextClick}>
+                  Next
+                </Button>
+              </ButtonGroup>
+            </CardContent>
+          </Card>
         </Grid>
       </Grid>
     </Container>
