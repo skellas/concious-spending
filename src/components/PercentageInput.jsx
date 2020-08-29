@@ -70,7 +70,7 @@ export default function PercentageInput(
       <Grid item xs={4}>
         <TextField
           id={`${id}-calculated`}
-          value={Number(percentageOf * (value / 100)).toFixed(2)}
+          value={`$${Number(percentageOf * (value / 100)).toFixed(2)}`}
           variant='outlined'
           label={`You'll need`}
           aria-readonly={true}
