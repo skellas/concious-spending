@@ -5,7 +5,7 @@ export default function SpendingForm({ incomeDefault, savingsDefault, investment
 
     const [income, setIncome] = useState(incomeDefault);
     const handleIncomeChange = (event) => {
-        setIncome(event.target.value === '' ? 0 : Number(event.target.value.replace('$','')));
+        setIncome(event.target.value === '' ? 0 : Number(event.target.value.replace('$', '')));
     };
 
     const [savings, setSavings] = useState(savingsDefault);
@@ -28,7 +28,7 @@ export default function SpendingForm({ incomeDefault, savingsDefault, investment
         setSplurge(value);
         setCalculationError(savings + investments + bills + splurge > 100);
     };
-    const [calculationError, setCalculationError]  = useState(false);
+    const [calculationError, setCalculationError] = useState(false);
     return (
         <React.Fragment>
             <Grid container direction='row' spacing={4}>
