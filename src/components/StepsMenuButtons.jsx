@@ -11,7 +11,7 @@ export default function StepsMenuButtons({ currentStep, steps, handleBackClick, 
                     Back
                 </Button>
                 <Button
-                    disabled={currentStep === steps.length}
+                    disabled={currentStep === steps.length-1}
                     onClick={handleNextClick}>
                     Next
                 </Button>
