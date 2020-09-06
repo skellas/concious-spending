@@ -1,28 +1,29 @@
-import React, {useState} from 'react'
+import React from 'react'
+import { usePersistedState } from '../services/PersistenceService';
 import { Typography, Card, CardContent, TextField } from '@material-ui/core'
 
 export default function NeedsForm({ value, handleValueChange }) {
-    const [food, setFood] = useState(0);
+    const [food, setFood] = usePersistedState('food', 0);
     const handleFoodChange = (event) => {
         setFood(event.target.value === '' ? 0 : Number(event.target.value.replace('$', '')));
         handleValueChange(food + shelter + bills + debt + other)
     };
-    const [shelter, setShelter] = useState(0);
+    const [shelter, setShelter] = usePersistedState('shelter', 0);
     const handleShelterChange = (event) => {
         setShelter(event.target.value === '' ? 0 : Number(event.target.value.replace('$', '')));
         handleValueChange(food + shelter + bills + debt + other)
     };
-    const [bills, setBills] = useState(0);
+    const [bills, setBills] = usePersistedState('bills', 0);
     const handleBillsChange = (event) => {
         setBills(event.target.value === '' ? 0 : Number(event.target.value.replace('$', '')));
         handleValueChange(food + shelter + bills + debt + other)
     };
-    const [debt, setDebt] = useState(0);
+    const [debt, setDebt] = usePersistedState('debt', 0);
     const handleDebtChange = (event) => {
         setDebt(event.target.value === '' ? 0 : Number(event.target.value.replace('$', '')));
         handleValueChange(food + shelter + bills + debt + other)
     };
-    const [other, setOther] = useState(0);
+    const [other, setOther] = usePersistedState('other', 0);
     const handleOtherChange = (event) => {
         setOther(event.target.value === '' ? 0 : Number(event.target.value.replace('$', '')));
         handleValueChange(food + shelter + bills + debt + other)
