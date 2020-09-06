@@ -8,6 +8,7 @@ import StepsMenu from './components/StepsMenu';
 import StepsMenuButtons from './components/StepsMenuButtons';
 import OverviewForm from './container/OverviewForm';
 import IncomeForm from './container/IncomeForm';
+import NeedsForm from './container/NeedsForm';
 
 function App() {
   const steps = [
@@ -20,6 +21,7 @@ function App() {
   ];
   let [currentStep, setCurrentStep] = useState(0);
   let [income, setIncome] = useState(0);
+  let [needs, setNeeds] = useState(0);
   let [savingsPercent, setSavingsPercent] = useState(10);
   let [investmentsPercent, setInvestmentsPercent] = useState(10);
   let [needsPercent, setNeedsPercent] = useState(60);
@@ -31,6 +33,8 @@ function App() {
         return <OverviewForm />;
       case 1:
         return <IncomeForm value={income} handleValueChange={setIncome} />
+        case 2:
+          return <NeedsForm value={needs} handleValueChange={setNeeds} />
       case 5:
         return (
           <SpendingForm
