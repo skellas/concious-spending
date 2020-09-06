@@ -8,13 +8,23 @@ export default function IncomeForm({ value, handleValueChange }) {
     return (
         <Card>
             <CardContent>
+                <Typography id='iHeader' variant='h4'>
+                    What is your current income?
+                </Typography>
                 <Typography id='ip1' variant='body1'>
-                    What is your current take home income? As in,
-                    after all the taxes and any pre-tax contributions, what is it that's
-                    actually coming home at the end of every year?
-            </Typography>
-                <TextField fullWidth id='income' label='My yearly take home income is'
+                    What is your current take home income?
+                </Typography>
+                <Typography id='ip2' variant='body1'> 
+                    As in, after any pre-tax contributions and all taxes are applied, 
+                    what is it that's actually coming home?
+                </Typography>
+                <Typography id='ip3' variant='body1'>
+                    This can be either annually or per paycheck, what you enter will affect what your
+                    report will look like.
+                </Typography>
+                <TextField fullWidth id='incomeInput' label='My take home income is'
                     value={`$${value}`} onChange={handleIncomeChange}
+                    style={{marginTop: '8px'}}
                 />
             </CardContent>
         </Card>

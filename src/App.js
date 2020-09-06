@@ -51,9 +51,9 @@ function App() {
   return (
     <Container maxWidth='sm'>
       <Grid container direction='column' spacing={1} >
-        <Grid item style={{ height: '42px' }}>
+        <Grid item style={{ height: '62px' }}>
           <AppBar position='static'>
-            <Typography variant='h4' style={{ marginLeft: '2%' }}>Conscious Spending App</Typography>
+            <Typography variant='h3' style={{ marginLeft: '2%' }}>Conscious Spending plan</Typography>
           </AppBar>
         </Grid>
         <Grid item>
