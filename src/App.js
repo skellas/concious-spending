@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar'
-import { Grid, ButtonGroup, Button, Paper, Card, CardContent } from '@material-ui/core';
+import { Grid, Paper, Card, CardContent } from '@material-ui/core';
 import SpendingForm from './container/SpendingForm';
 import StepsMenu from './components/StepsMenu';
+import StepsMenuButtons from './components/StepsMenuButtons';
 import OverviewForm from './container/OverviewForm';
 import IncomeForm from './container/IncomeForm';
 
@@ -44,8 +45,8 @@ function App() {
 
     }
   }
-  const handleNextClick = () => setCurrentStep(currentStep+1);
-  const handleBackClick = () => setCurrentStep(currentStep-1);
+  const handleNextClick = () => setCurrentStep(currentStep + 1);
+  const handleBackClick = () => setCurrentStep(currentStep - 1);
 
   return (
     <Container maxWidth='sm'>
@@ -56,28 +57,18 @@ function App() {
           </AppBar>
         </Grid>
         <Grid item>
-          <StepsMenu steps={steps} activeStep={currentStep} />
+          <StepsMenu steps={steps} activeStep={currentStep} handleBackClick={handleBackClick} handleNextClick={handleNextClick} />
         </Grid>
         <Grid item>
           <Paper elevation={1}>
-              {renderCurrentStep()}
+            {renderCurrentStep()}
           </Paper>
         </Grid>
         <Grid item>
           <Card>
             <CardContent style={{ alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
-              <ButtonGroup color='primary'>
-                <Button 
-                  disabled={currentStep === 0}
-                  onClick={handleBackClick}>
-                  Back
-                </Button>
-                <Button 
-                  disabled={currentStep === steps.length}
-                  onClick={handleNextClick}>
-                  Next
-                </Button>
-              </ButtonGroup>
+              <StepsMenuButtons currentStep={currentStep} steps={steps}
+                handleNextClick={handleNextClick} handleBackClick={handleBackClick} />
             </CardContent>
           </Card>
         </Grid>
