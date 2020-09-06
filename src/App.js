@@ -22,11 +22,8 @@ function App() {
   let [currentStep, setCurrentStep] = useState(0);
   let [income, setIncome] = useState(0);
   let [needs, setNeeds] = useState(0);
-  let [savingsPercent, setSavingsPercent] = useState(10);
-  let [investmentsPercent, setInvestmentsPercent] = useState(10);
-  let [needsPercent, setNeedsPercent] = useState(60);
-  let [wantsPercent, setWantsPercent] = useState(20);
 
+  const findPercentage = ( val ) => val / income * 100;
   const renderCurrentStep = () => {
     switch (currentStep) {
       case 0:
@@ -39,10 +36,10 @@ function App() {
         return (
           <SpendingForm
             income={income}
-            savingsDefault={savingsPercent}
-            investmentDefault={investmentsPercent}
-            billsDefault={needsPercent}
-            splurgeDefault={wantsPercent}
+            savingsDefault={0}
+            investmentDefault={0}
+            billsDefault={findPercentage(needs)}
+            splurgeDefault={0}
           />);
       default:
         return <React.Fragment />
