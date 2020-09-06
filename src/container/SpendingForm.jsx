@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
-import { TextField, Grid } from '@material-ui/core';
 import PercentageInput from '../components/PercentageInput';
-export default function SpendingForm({ incomeDefault, savingsDefault, investmentDefault, billsDefault, splurgeDefault }) {
-
-    const [income, setIncome] = useState(incomeDefault);
-    const handleIncomeChange = (event) => {
-        setIncome(event.target.value === '' ? 0 : Number(event.target.value.replace('$', '')));
-    };
+import {  Card, CardContent } from '@material-ui/core'
+export default function SpendingForm({ income, savingsDefault, investmentDefault, billsDefault, splurgeDefault }) {
 
     const [savings, setSavings] = useState(savingsDefault);
     const handleSavingsChange = (value) => {
@@ -30,14 +25,8 @@ export default function SpendingForm({ incomeDefault, savingsDefault, investment
     };
     const [calculationError, setCalculationError] = useState(false);
     return (
-        <React.Fragment>
-            <Grid container direction='row' spacing={4}>
-                <Grid item xs={8}>
-                    <TextField fullWidth id='income' label='My take home income is'
-                        value={`$${income}`} onChange={handleIncomeChange}
-                    />
-                </Grid>
-            </Grid>
+        <Card>
+            <CardContent>
             <PercentageInput id='savings-slider' label='I want to save'
                 minimumValue={0} maximumValue={50} defaultValue={savingsDefault}
                 percentageOf={income} value={savings} changeHandler={handleSavingsChange}
@@ -58,6 +47,7 @@ export default function SpendingForm({ incomeDefault, savingsDefault, investment
                 percentageOf={income} value={splurge} changeHandler={handleSplurgeChange}
                 error={calculationError}
             />
-        </React.Fragment>
+            </CardContent>
+        </Card>
     )
 }

@@ -6,6 +6,7 @@ import { Grid, ButtonGroup, Button, Paper, Card, CardContent } from '@material-u
 import SpendingForm from './container/SpendingForm';
 import StepsMenu from './components/StepsMenu';
 import OverviewForm from './container/OverviewForm';
+import IncomeForm from './container/IncomeForm';
 
 function App() {
   const steps = [
@@ -27,10 +28,12 @@ function App() {
     switch (currentStep) {
       case 0:
         return <OverviewForm />;
+      case 1:
+        return <IncomeForm value={income} handleValueChange={setIncome} />
       case 5:
         return (
           <SpendingForm
-            incomeDefault={income}
+            income={income}
             savingsDefault={savingsPercent}
             investmentDefault={investmentsPercent}
             billsDefault={needsPercent}
