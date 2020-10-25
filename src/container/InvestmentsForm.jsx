@@ -38,7 +38,7 @@ export default function InvestmentsForm({ value, handleValueChange }) {
                     Investments
                 </Typography>
                 <TextField fullWidth id='iInput' label='Investments'
-                    value={`$${value}`} onChange={handleChange}
+                    value={`$${Number(value).toFixed(0)}`} onChange={handleChange}
                     style={{marginTop: '8px'}}
                 />
             </CardContent>

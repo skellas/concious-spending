@@ -25,7 +25,7 @@ export default function SavingsForm({ savingsValue, handleSavingsValueChange, ne
                     Three Months of Needs
                 </Typography>
                 <TextField fullWidth id='targetThreeMonthsInput' label='Target: 3 months'
-                    value={`$${needsValue * 3}`} disabled={true}
+                    value={`$${Number(needsValue * 3).toFixed(0)}`} disabled={true}
                     style={{marginTop: '8px'}}
                 />
                 <Typography id='sTargetSixMonths' variant='h6'
@@ -34,7 +34,7 @@ export default function SavingsForm({ savingsValue, handleSavingsValueChange, ne
                     Six Months of Needs
                 </Typography>
                 <TextField fullWidth id='targetSixMonthsInput' label='Target: 6 months'
-                    value={`$${needsValue * 6}`} disabled={true}
+                    value={`$${Number(needsValue * 6).toFixed(0)}`} disabled={true}
                     style={{marginTop: '8px'}}
                 />
                 <Typography id='sInput' variant='h6'
@@ -43,7 +43,7 @@ export default function SavingsForm({ savingsValue, handleSavingsValueChange, ne
                     Monthly Savings
                 </Typography>
                 <TextField fullWidth id='savingsInput' label='Savings'
-                    value={`$${savingsValue}`} onChange={handleSavingsChange}
+                    value={`$${Number(savingsValue).toFixed(0)}`} onChange={handleSavingsChange}
                     style={{marginTop: '8px'}}
                 />
             </CardContent>

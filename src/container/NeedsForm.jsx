@@ -68,7 +68,7 @@ export default function NeedsForm({ value, handleValueChange }) {
                     Total Needs
                 </Typography>
                 <TextField fullWidth id='needsInput' label='Needs Amount'
-                    value={`$${value}`} disabled={true}
+                    value={`$${Number(value).toFixed(0)}`} disabled={true}
                     style={{marginTop: '8px'}}
                 />
             </CardContent>
