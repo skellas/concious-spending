@@ -29,7 +29,6 @@ function App() {
   let [preTaxInvestments, setPreTaxInvestments] = usePersistedState('preTaxInvestments', 0);
   let [postTaxInvestments, setPostTaxInvestments] = usePersistedState('postTaxInvestments', 0);
 
-  const findPercentage = ( val ) => Math.round(val / income * 100);
   const renderCurrentStep = () => {
     switch (currentStep) {
       case 0:
@@ -48,10 +47,10 @@ function App() {
         return (
           <SpendingForm
             income={income}
-            savingsDefault={findPercentage(savings)}
-            investmentDefault={findPercentage(preTaxInvestments + postTaxInvestments)}
-            billsDefault={findPercentage(needs)}
-            splurgeDefault={100 - findPercentage(savings + needs + preTaxInvestments + postTaxInvestments)}
+            savings={savings} updateSavings={setSavings}
+            preTaxInvestments={preTaxInvestments} updatePreTaxInvestments={setPreTaxInvestments}
+            postTaxInvestments={postTaxInvestments} updatePostTaxInvestments={setPostTaxInvestments}
+            bills={needs} updateBills={setNeeds}
           />);
       default:
         return <React.Fragment />

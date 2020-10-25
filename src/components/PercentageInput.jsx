@@ -17,11 +17,13 @@ export default function PercentageInput(
   }
   ) {
 
+  const findPercentage = ( val ) => Math.round(val / percentageOf * 100);
+  const findValueFromPercentage = ( percentage ) => Number(percentageOf * (percentage / 100));
   const handleSliderChange = (event, newValue) => {
-    changeHandler(newValue);
+    changeHandler(findValueFromPercentage(newValue));
   };
   const handleInputChange = (event) => {
-    changeHandler(event.target.value === '' ? '' : Number(removePercentageSign(event.target.value)));
+    changeHandler(event.target.value === '' ? '' :findValueFromPercentage(Number(removePercentageSign(event.target.value))));
   };
   const removePercentageSign = (input) => input.replace('%', '');
 
@@ -51,19 +53,21 @@ export default function PercentageInput(
       <Grid item xs={6}>
         <Typography id={`${id}-label`}>{label}</Typography>
         <Slider
+          id={`${id}`}
           aria-labelledby={`${id}-label`}
           step={1}
           min={minimumValue}
           max={maximumValue}
           marks={inputMarks}
-          value={value}
+          value={findPercentage(value)}
           onChange={handleSliderChange}
           disabled={disabled}
         />
       </Grid>
       <Grid item xs={2}>
         <Input
-          value={`${value}%`}
+          id={`${id}-input`}
+          value={`${findPercentage(value)}%`}
           onChange={handleInputChange}
           onBlur={handleOnBlur}
           error={error}
@@ -73,7 +77,7 @@ export default function PercentageInput(
       <Grid item xs={4}>
         <TextField
           id={`${id}-calculated`}
-          value={`$${Number(percentageOf * (value / 100)).toFixed(2)}`}
+          value={`$${Number(value).toFixed(2)}`}
           variant='outlined'
           label={`You'll need`}
           aria-readonly={true}
