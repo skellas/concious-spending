@@ -11,7 +11,7 @@ export default function SpendingForm(
     ) {
 
     const isErrorPresent = () => savings + investments + bills > income;
-    const calculateSplurgeSurplus = () => income - (savings + investments + bills);
+    const calculateSplurgeSurplus = () => Number(income - (savings + investments + bills)).toFixed(2);
     
     return (
         <Card id={'spending-form'}>

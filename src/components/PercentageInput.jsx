@@ -17,7 +17,7 @@ export default function PercentageInput(
   }
   ) {
 
-  const findPercentage = ( val ) => Math.round(val / percentageOf * 100);
+  const findPercentage = ( val ) => Math.round(val / percentageOf * 100).toFixed(0);
   const findValueFromPercentage = ( percentage ) => Number(percentageOf * (percentage / 100).toFixed(2));
   const handleSliderChange = (event, newValue) => {
     changeHandler(findValueFromPercentage(newValue));
