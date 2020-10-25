@@ -10,6 +10,7 @@ import OverviewForm from './container/OverviewForm';
 import IncomeForm from './container/IncomeForm';
 import NeedsForm from './container/NeedsForm';
 import SavingsForm from './container/SavingsForm';
+import InvestmentsForm from './container/InvestmentsForm';
 import { usePersistedState } from './services/PersistenceService';
 
 function App() {
@@ -25,6 +26,8 @@ function App() {
   let [income, setIncome] = usePersistedState('income', 0);
   let [needs, setNeeds] = usePersistedState('needs', 0);
   let [savings, setSavings] = usePersistedState('savings', 0);
+  let [preTaxInvestments, setPreTaxInvestments] = usePersistedState('preTaxInvestments', 0);
+  let [postTaxInvestments, setPostTaxInvestments] = usePersistedState('postTaxInvestments', 0);
 
   const findPercentage = ( val ) => Math.round(val / income * 100);
   const renderCurrentStep = () => {
@@ -38,14 +41,17 @@ function App() {
         case 3:
           return <SavingsForm savingsValue={savings} handleSavingsValueChange={setSavings}
                               needsValue={needs} />
+        case 4:
+          return <InvestmentsForm preTaxValue={preTaxInvestments} handlePreTaxValueChange={setPreTaxInvestments}
+                                  postTaxValue={postTaxInvestments} handlePostTaxValueChange={setPostTaxInvestments} />
       case 5:
         return (
           <SpendingForm
             income={income}
             savingsDefault={findPercentage(savings)}
-            investmentDefault={0}
+            investmentDefault={findPercentage(preTaxInvestments + postTaxInvestments)}
             billsDefault={findPercentage(needs)}
-            splurgeDefault={100 - findPercentage(savings + needs)}
+            splurgeDefault={100 - findPercentage(savings + needs + preTaxInvestments + postTaxInvestments)}
           />);
       default:
         return <React.Fragment />
