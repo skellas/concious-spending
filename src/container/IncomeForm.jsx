@@ -12,14 +12,14 @@ export default function IncomeForm({ value, handleValueChange }) {
                     What is your current income?
                 </Typography>
                 <Typography id='ip1' variant='body1'>
-                    What is your current take home income?
+                    How much are you currently taking home each month?
                 </Typography>
                 <Typography id='ip2' variant='body1'> 
                     As in, after any pre-tax contributions and all taxes are applied, 
-                    what is it that's actually coming home?
+                    what is the amount that's actually usable in your paycheck?
                 </Typography>
                 <Typography id='ip3' variant='body1'>
-                    This can be either annually or per paycheck, what you enter will affect what your
+                    This can be either annually, monthly, or per paycheck, what you enter will affect what your
                     report will look like.
                 </Typography>
                 <TextField fullWidth id='incomeInput' label='My take home income is'

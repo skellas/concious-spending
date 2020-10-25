@@ -5,14 +5,13 @@ export default function SpendingForm(
     { 
         income, 
         savings, updateSavings,
-        preTaxInvestments, updatePreTaxInvestments,
-        postTaxInvestments, updatePostTaxInvestments,
+        investments, updateInvestments,
         bills, updateBills
     }
     ) {
 
-    const isErrorPresent = () => savings + preTaxInvestments + postTaxInvestments + bills > income;
-    const calculateSplurgeSurplus = () => income - (savings + preTaxInvestments + postTaxInvestments + bills);
+    const isErrorPresent = () => savings + investments + bills > income;
+    const calculateSplurgeSurplus = () => income - (savings + investments + bills);
     
     return (
         <Card id={'spending-form'}>
@@ -22,14 +21,9 @@ export default function SpendingForm(
                     percentageOf={income} value={savings} changeHandler={updateSavings}
                     error={isErrorPresent()}
                 />
-                <PercentageInput id='pre-investment-slider' label='I want to invest(pre tax)'
-                    minimumValue={0} maximumValue={50} defaultValue={preTaxInvestments}
-                    percentageOf={income} value={preTaxInvestments} changeHandler={updatePreTaxInvestments}
-                    error={isErrorPresent()}
-                />
-                <PercentageInput id='post-investment-slider' label='I want to invest(post tax)'
-                    minimumValue={0} maximumValue={50} defaultValue={postTaxInvestments}
-                    percentageOf={income} value={postTaxInvestments} changeHandler={updatePostTaxInvestments}
+                <PercentageInput id='investment-slider' label='I want to invest'
+                    minimumValue={0} maximumValue={50} defaultValue={investments}
+                    percentageOf={income} value={investments} changeHandler={updateInvestments}
                     error={isErrorPresent()}
                 />
                 <PercentageInput id='bills-slider' label='I need to pay bills'

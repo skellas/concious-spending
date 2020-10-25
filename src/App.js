@@ -26,8 +26,7 @@ function App() {
   let [income, setIncome] = usePersistedState('income', 0);
   let [needs, setNeeds] = usePersistedState('needs', 0);
   let [savings, setSavings] = usePersistedState('savings', 0);
-  let [preTaxInvestments, setPreTaxInvestments] = usePersistedState('preTaxInvestments', 0);
-  let [postTaxInvestments, setPostTaxInvestments] = usePersistedState('postTaxInvestments', 0);
+  let [investments, setInvestments] = usePersistedState('investments', 0);
 
   const renderCurrentStep = () => {
     switch (currentStep) {
@@ -41,15 +40,13 @@ function App() {
           return <SavingsForm savingsValue={savings} handleSavingsValueChange={setSavings}
                               needsValue={needs} />
         case 4:
-          return <InvestmentsForm preTaxValue={preTaxInvestments} handlePreTaxValueChange={setPreTaxInvestments}
-                                  postTaxValue={postTaxInvestments} handlePostTaxValueChange={setPostTaxInvestments} />
+          return <InvestmentsForm value={investments} handleValueChange={setInvestments}/>
       case 5:
         return (
           <SpendingForm
             income={income}
             savings={savings} updateSavings={setSavings}
-            preTaxInvestments={preTaxInvestments} updatePreTaxInvestments={setPreTaxInvestments}
-            postTaxInvestments={postTaxInvestments} updatePostTaxInvestments={setPostTaxInvestments}
+            investments={investments} updateInvestments={setInvestments}
             bills={needs} updateBills={setNeeds}
           />);
       default:

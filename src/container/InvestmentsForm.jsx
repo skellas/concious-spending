@@ -1,12 +1,9 @@
 import React from 'react'
 import { Typography, Card, CardContent, TextField, Link } from '@material-ui/core'
 
-export default function InvestmentsForm({ preTaxValue, handlePreTaxValueChange, postTaxValue, handlePostTaxValueChange  }) {
-    const handlePreTaxChange = (event) => {
-        handlePreTaxValueChange(event.target.value === '' ? 0 : Number(event.target.value.replace('$', '')));
-    };
-    const handlePostTaxChange = (event) => {
-        handlePostTaxValueChange(event.target.value === '' ? 0 : Number(event.target.value.replace('$', '')));
+export default function InvestmentsForm({ value, handleValueChange }) {
+    const handleChange = (event) => {
+        handleValueChange(event.target.value === '' ? 0 : Number(event.target.value.replace('$', '')));
     };
     return (
         
@@ -31,27 +28,17 @@ export default function InvestmentsForm({ preTaxValue, handlePreTaxValueChange, 
                     Getting your employer match is 
                     <Link href='https://notjustseth.com/how-one-decision-in-my-twenties-shaped-my-life/' target='_blank'> a game changer.</Link>
                 </Typography>
-                
-                <Typography id='preTaxLabel' variant='h6'
-                    style={{marginTop: '20px'}}
-                >
-                    Pre Tax Investments
-                </Typography>
-                <TextField fullWidth id='preTaxInput' label='Pre Tax Investments'
-                    value={`$${preTaxValue}`} onChange={handlePreTaxChange}
-                    style={{marginTop: '8px'}}
-                />
                 <Typography id='ip5' variant='body1' style={{marginTop: '20px'}}> 
                     Post-Tax is open to a lot of opportunities. We can invest in a brokerage account or a Roth IRA.
                     There's tax advantages to the Roth IRA and there's some advantages to keeping your funds more liquid, in a brokerage account.
                 </Typography>
-                <Typography id='postTaxLabel' variant='h6'
+                <Typography id='iLabel' variant='h6'
                     style={{marginTop: '20px'}}
                 >
-                    Post Tax Investments
+                    Investments
                 </Typography>
-                <TextField fullWidth id='postTaxInput' label='Post Tax Investments'
-                    value={`$${postTaxValue}`} onChange={handlePostTaxChange}
+                <TextField fullWidth id='iInput' label='Investments'
+                    value={`$${value}`} onChange={handleChange}
                     style={{marginTop: '8px'}}
                 />
             </CardContent>
