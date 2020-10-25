@@ -9,6 +9,8 @@ import StepsMenuButtons from './components/StepsMenuButtons';
 import OverviewForm from './container/OverviewForm';
 import IncomeForm from './container/IncomeForm';
 import NeedsForm from './container/NeedsForm';
+import SavingsForm from './container/SavingsForm';
+import { usePersistedState } from './services/PersistenceService';
 
 function App() {
   const steps = [
@@ -20,10 +22,11 @@ function App() {
     { 'id': 'summary', 'label': 'Report' },
   ];
   let [currentStep, setCurrentStep] = useState(0);
-  let [income, setIncome] = useState(0);
-  let [needs, setNeeds] = useState(0);
+  let [income, setIncome] = usePersistedState('income', 0);
+  let [needs, setNeeds] = usePersistedState('needs', 0);
+  let [savings, setSavings] = usePersistedState('savings', 0);
 
-  const findPercentage = ( val ) => val / income * 100;
+  const findPercentage = ( val ) => Math.round(val / income * 100);
   const renderCurrentStep = () => {
     switch (currentStep) {
       case 0:
@@ -32,14 +35,17 @@ function App() {
         return <IncomeForm value={income} handleValueChange={setIncome} />
         case 2:
           return <NeedsForm value={needs} handleValueChange={setNeeds} />
+        case 3:
+          return <SavingsForm savingsValue={savings} handleSavingsValueChange={setSavings}
+                              needsValue={needs} />
       case 5:
         return (
           <SpendingForm
             income={income}
-            savingsDefault={0}
+            savingsDefault={findPercentage(savings)}
             investmentDefault={0}
             billsDefault={findPercentage(needs)}
-            splurgeDefault={0}
+            splurgeDefault={100 - findPercentage(savings + needs)}
           />);
       default:
         return <React.Fragment />

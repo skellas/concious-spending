@@ -12,7 +12,8 @@ export default function PercentageInput(
     percentageOf, 
     value, 
     changeHandler,
-    error
+    error,
+    disabled = false
   }
   ) {
 
@@ -57,6 +58,7 @@ export default function PercentageInput(
           marks={inputMarks}
           value={value}
           onChange={handleSliderChange}
+          disabled={disabled}
         />
       </Grid>
       <Grid item xs={2}>
@@ -65,6 +67,7 @@ export default function PercentageInput(
           onChange={handleInputChange}
           onBlur={handleOnBlur}
           error={error}
+          disabled={disabled}
         />
       </Grid>
       <Grid item xs={4}>

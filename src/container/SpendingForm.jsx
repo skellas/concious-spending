@@ -45,7 +45,7 @@ export default function SpendingForm({ income, savingsDefault, investmentDefault
             <PercentageInput id='splurge-slider' label='Guilt free spending money'
                 minimumValue={0} maximumValue={30} defaultValue={splurgeDefault}
                 percentageOf={income} value={splurge} changeHandler={handleSplurgeChange}
-                error={calculationError}
+                error={calculationError} disabled={true}
             />
             </CardContent>
         </Card>
